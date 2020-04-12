@@ -16,7 +16,7 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- task: L0Test
+- task: L0-Test
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
@@ -24,3 +24,4 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
+
