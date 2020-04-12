@@ -21,6 +21,7 @@ steps:
     command: 'publish'
     publishWebProjects: true
     zipAfterPublish: false
+    
 
 - task: PublishBuildArtifacts@1
   inputs:
