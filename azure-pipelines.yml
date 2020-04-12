@@ -16,15 +16,11 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- task: VSTest@2
+
+- task: PublishBuildArtifacts@1
   inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\**Test.L0.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    uiTests: false
-    
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
     
 
