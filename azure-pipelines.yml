@@ -17,11 +17,18 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
   
 - task: DotNetCoreCLI@2
+  enabled: false
+  inputs:
+    command: 'test'
+    projects: '**/Test.L0.cproj'
+  
+
+- task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
     command: publish
     publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
+    arguments: '--configuration $(BuildConfiguration)  --output $(build.artifactstagingdirectory)'
     zipAfterPublish: false
 
 
@@ -30,3 +37,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+  
